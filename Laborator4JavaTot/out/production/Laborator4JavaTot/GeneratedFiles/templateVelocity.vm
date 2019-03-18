@@ -1,0 +1,10 @@
+<html>
+  <body>
+    Hello! This is a velocity file. <br>
+    And this is our catalog content: <br><br>
+
+    $catalog
+   
+
+  </body>
+</html>

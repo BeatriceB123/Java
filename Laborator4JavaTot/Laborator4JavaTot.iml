@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8.0_201" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/Codrin/itext-5.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Codrin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://E:/Codrin" />
+        </SOURCES>
+        <jarDirectory url="file://E:/Codrin" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Codrin/New folder" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://E:/Codrin/New folder/poi-4.0.1/docs/apidocs/dev" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="file://E:/Codrin/New folder" />
+        </SOURCES>
+        <jarDirectory url="file://E:/Codrin/New folder" recursive="false" />
+        <jarDirectory url="file://E:/Codrin/New folder" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Codrin/New folder/poi-4.0.1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://E:/Codrin/New folder/poi-4.0.1" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Biblioteci" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://E:/Biblioteci/New folder/poi-4.0.1/docs/apidocs/dev" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="file://E:/Biblioteci" />
+        </SOURCES>
+        <jarDirectory url="file://E:/Biblioteci" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Biblioteci/New folder" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://E:/Biblioteci/New folder" />
+        </SOURCES>
+        <jarDirectory url="file://E:/Biblioteci/New folder" recursive="false" />
+        <jarDirectory url="file://E:/Biblioteci/New folder" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://E:/Biblioteci/New folder/poi-4.0.1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://E:/Biblioteci/New folder/poi-4.0.1" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>

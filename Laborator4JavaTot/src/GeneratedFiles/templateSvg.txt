@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My first SVG</h1>
+
+<svg width="500" height="500">
+   <circle cx="coordX" cy="coordY" r="raza" stroke="green" stroke-width="4" fill="yellow" />
+   TOBEREPLACED
+</svg> 
+ 
+</body>
+</html>
