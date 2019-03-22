@@ -53,7 +53,7 @@ public class SvgCommand extends Command {
             throws WrongCommandArguments, IOException {
         if ( arguments.size () != 1 )
             throw new WrongCommandArguments ("One argument for svg command");
-
+        init ();
         String pathToTemplate = pathToFile + "templateSvg.txt";
         String content = readFile (pathToTemplate, StandardCharsets.UTF_8);
 
@@ -63,39 +63,50 @@ public class SvgCommand extends Command {
         content = content.replaceAll("coordX", String.valueOf (coordX));
         content = content.replaceAll("coordY", String.valueOf (coordY));
         content = content.replaceAll("raza", String.valueOf (raza));
-        System.out.println (content + "*");
 
         String nameOfFile = "paginaSvg.html"; //arguments.get(0);
         BufferedWriter writer = new BufferedWriter (new FileWriter (pathToFile + nameOfFile));
 
         //StringBuilder toWrite = new StringBuilder();
 
-       // ArrayList<int>
+        double[] coordXPunct = new double[n];
+        double[] coordYPunct = new double[n];
 
         for(int i=0; i<n; i++)
         {
-          // double coordXPunct = coordX - raza*Math.sin(i*360/(double)n);
-          // double coordYPunct = coordY + raza*(1 - Math.cos(i*360/(double)n));
-            double coordXPunct = coordX + raza * Math.cos(i*360/(double)n);
-            double coordYPunct = coordY - raza * Math.sin(i*360/(double)n);
+            coordXPunct[i] = coordX + raza * Math.cos(i*360/(double)n);
+            coordYPunct[i] = coordY - raza * Math.sin(i*360/(double)n);
             content = content.replace("TOBEREPLACED",
-                   "<circle cx=\"" + Double.toString(coordXPunct)
-                                   + "\" cy=\"" + Double.toString(coordYPunct)
+                   "<circle cx=\"" + Double.toString(coordXPunct[i])
+                                   + "\" cy=\"" + Double.toString(coordYPunct[i])
                                    + "\" r=\"10\"  fill=\"red\" />\n"
                                    + "TOBEREPLACED");
         }
+       // content = content.replaceAll ("TOBEREPLACED", "");
+
+
+        for(int i=0; i<n; i++)
+            for(int j=0; j<n; j++)
+            {
+                System.out.println (adjacencyMatrix[i][j]);
+                if(adjacencyMatrix[i][j] == 1)
+                {
+                    //System.out.println ("DF");
+                    content = content.replace("TOBEREPLACED",
+                   "<line x1=\"" + Double.toString(coordXPunct[i]) +
+                   " y1=\"" + Double.toString(coordYPunct[i]) + "\"" +
+                   " x2=\"" + Double.toString(coordXPunct[j]) + "\"" +
+                   " y2=\"" + Double.toString(coordYPunct[j]) + "\"" + "style=\"stroke:rgb(255,0,0);stroke-width:5\" />"
+                    + "TOBEREPLACED" );
+                }
+            }
+
         content = content.replaceAll ("TOBEREPLACED", "");
+        System.out.println (content + "*");
+
 
 
         /*
-        for(int i=0; i<n; i++) //desenam toate nodurile pe cerc
-        {
-            double xcerc = intialX - 400*Math.sin(contor*360/(matrix.length));
-            double ycerc= initialY+400*(1-Math.cos(contor*360/(matrix.length)));
-            toWrite.append( "  <circle cx=\"" + Double.toString(xcerc)+"\" cy=\""
-                            +Double.toString(ycerc)+"\" r=\"10\" stroke=\"black\" stroke-width=\"3\" fill=\"blue\" />\n");
-        }
-
         for(int i=0; i<matrix.length-1; i++)
         {
 
