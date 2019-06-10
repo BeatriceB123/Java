@@ -1,0 +1,149 @@
+<html>
+<head> 
+<title> Lab 2</title> 
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+table {
+	border-collapse: collapse;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+</style>  
+</head>
+<body>
+
+<h1> Lab 2</h1>
+<b>[valid 2018-2019]</b>
+
+<p>
+<b><font color="red">Starting from this week...</font></b>:
+<ul>
+<li>Comment and properly format the source code of your programs (otherwise: -0.5 points)
+<li>Use the <a href="http://www.oracle.com/technetwork/java/codeconventions-135099.html">naming conventions</a> for writing Java code.</a> 
+"Naming conventions make programs more understandable by making them easier to read." (otherwise: -0.5 points)
+<li>Use the API documentation: <a href="http://docs.oracle.com/javase/8/docs/api/"> Java Platform, Standard Edition 8 API Specification</a> (otherwise...)
+</ul>
+
+<br><br>
+
+
+<b>The Student-Project Allocation Problem (SPA)</b> <br/>
+<p>
+An instance of SPA involves an equal number of <b>students</b> and <b>projects</b>. A project may be of various types. For now, a project may be an <i>application</i> or an <i>essay</i>.
+A student may be enrolled in at most one project. A project may be assigned to at most one student.
+Each student has a set of acceptable projects.
+<p>
+We consider the problem of allocating students to projects, such that each student receives one acceptable project.
+
+<p>Example: 4 students, 5 projects (3 applications, 2 essays) <code>A1, A2, A3, E1, E2</code>.
+<table border="1">
+<tr>
+<th>Student preferences </th>
+<tr><td> S1: (A1, A2, A3) </td>
+<tr><td> S2: (A1, E1) </td>
+<tr><td> S3: (A2, A3, E1) </td>
+<tr><td> S4: (A3, E2) </td>
+</table>
+A solution for this example might be: <code>[(S1:A2),(S2:E1),(S3:A3),(S4:E2)]</code>
+
+
+<p>
+The main specifications of the application are:
+<hr>
+<p><b>Compulsory</b> (1p)
+<ul>
+<li>Create an object-oriented model of the problem. You should have (at least) the following classes: <i>Student, Project, Application, Essay, Problem</i>. <br/>
+A student is described (at least) by the following properties: <i>name</i> and <i>year of study</i>. <br/>
+A project must have (at least) the properties: <i>name</i> and <i>deadline</i>. <i>Project</i> must be an abstract class. <br/>
+Applications will also have the property <i>language</i> and essays will have the property <i>topic</i>. The available languages and topics will be implemented as <i>enum types</i>. For example:
+<pre>
+public enum Topic {
+    ALGORITHMS, DATA_STRUCTURES, WEB, DATABASES;
+}
+</pre>
+
+<li> Each class should have appropriate constructors, getters and setters. <br/>Use the <a href="https://netbeans.org/features/java/editor.html"> IDE features</a> for code generation,
+such as <a href="https://blogs.oracle.com/roumen/netbeans-quick-tip-2-generating-getters-and-setters">generating getters and setters</a>.
+
+<li> The <i>toString</i> method form the <i>Object</i> class must be properly overridden for all the classes. <br/>
+Use the <a href="https://netbeans.org/features/java/editor.html"> IDE features</a> for code generation, for example (in NetBeans)  press <i>Alt+Ins</i> or invoke the context menu, 
+select "Insert Code" and then "toString()" (or simply start typing "toString" and then press <i>Ctrl+Space</i>).
+
+<li>Create and print on the screen the instance of the problem described in the example.
+<pre>
+        Student s1 = new Student("S1", 2);
+        Student s2 = ...;
+        ...
+        Application a1 = new Application("A1", LocalDate.of(2019, Month.JUNE, 1), Language.JAVA);
+        Essay e1 = new Essay("E1", LocalDate.parse("2019-06-01"), Topic.ALGORITHMS);
+        ...
+        ...
+        s1.setPreferences(a1, a2, a3);
+        s2.setPreferences(a1, e1);
+        ...
+        ...
+        Problem problem = new Problem();
+        problem.setStudents(s1, s2, s3, s4);
+        System.out.println(problem);
+</pre>
+</ul>
+
+
+<hr>
+<p><b>Optional</b> (1p)
+<br/>
+<ul>
+<li> Override the <i>equals</i> method form the <i>Object</i> class for the <i>Student</i> classe. 
+The problem should not allow adding the same student, or project twice.
+<li> Implement the method <i>getProjects</i> in the <i>Problem</i> class, returning an array of all the projects (distinct) specified in the students preferences.
+<li>
+Implement a simple algorithm for allocating students to projects.
+The solution should be a <i>matching</i> between students and projects. Create a class to describe such a matching. <br/>
+
+<li>Write <a href="http://www.oracle.com/technetwork/java/javase/tech/index-137868.html">doc comments</a> in your source code 
+and generate the class documentation using <a href="https://docs.oracle.com/javase/9/javadoc/toc.htm">javadoc</a>.
+</ul>
+
+<hr>
+<p><b>Bonus</b>
+<br/>
+<ul>
+<li> Use <a href="https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem"> Hall's Theorem</a> to verify if it is possible to allocate a project for every student. <br/>
+<li> Implement an efficient algorithm that generates a <b>maximum</b> matching for the given problem.
+</ul>
+(Warning: No points are awarded unless the implementation can be clearly explained).
+<hr>
+
+<p>
+<b>Resources</b>
+<ul>
+<li><a href="http://docs.oracle.com/javase/tutorial/java/concepts/index.html">Tutorial: Object-Oriented Programming Concepts </a>
+<li><a href="http://docs.oracle.com/javase/tutorial/java/javaOO/index.html"> Tutorial: Classes and Objects</a>
+<li><a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html"> Java Language Specification: Classes</a>
+<li><a href="hhttps://docs.oracle.com/javase/tutorial/java/javaOO/enum.html"> Enum Types</a>
+<li><a href="https://docs.oracle.com/javase/tutorial/datetime/index.html"> The Date-Time package</a>
+</ul>
+
+</ul>
+
+<p> 
+<b>Objectives</b>
+<ul>
+<li> Create a project containing multiple classes.
+<li> Instantiate classes and manipulate objects.
+<li> Understand the concepts of: object identity, object state, encapsulation, property, accessors/mutators.
+<li> Override methods of the <i>Object</i> class.
+<li> Understand uni- and bi-directional relations among objects.
+<li> Understand the notion of multiplicity (one-to-one, one-to-many, many-to-many).
+<li> Implement instance-level relationships among objects (association).
+<li> Implement class-level relationships (generalization)
+<li> Work with abstract classes.
+<li> Get used to the naming conventions of the Java language.
+<li> Generate documentation using javadoc.
+</ul>
+
+</body>
+</html>

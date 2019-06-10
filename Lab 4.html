@@ -1,0 +1,146 @@
+<html>
+<head> <title> Lab 4</title> </head>
+<body>
+<a name="laborator4"></a>
+
+
+<h1> Lab 4</h1>
+<b>[valid 2018-2019]</b>
+
+<p>
+<b><font color="red">Starting from this week...</font></b>:
+
+<ul>
+<li>Pay attention to exception handling (otherwise: -0.5 points)
+<li>Create your own types of exceptions to report abnormal events related to application execution.
+</ul>
+
+<p>
+<b>Graph Catalog</b><br>
+Write an application that can manage <a href="https://en.wikipedia.org/wiki/Gallery_of_named_graphs">a catalog of graphs</a>. 
+An entry in this catalog might be a <i>simple graph</i>, <i>a digraph</i>, <i>multigraph</i>, etc. <br/>
+<br/>
+All items will have some common properties, such as <i>name</i>, <i>description</i>, <i>definition</i>, <i>image</i>, etc. 
+<br/>
+The definition of a graph will be stored in a text file, using standard formats, such as <a href="https://en.wikipedia.org/wiki/Trivial_Graph_Format"> trivial graph format (TGF) </a>,
+<a href="https://en.wikipedia.org/wiki/GraphML">GraphML</a> or others.
+<br/>
+Optional, a graph may have an image stored in a binary file, using standard formats, such as JPEG, PNG, SVG, PDF or others.
+
+<p>
+The main specifications of the application are:
+<hr>
+<p><b>Compulsory</b> (1p)
+<ul>
+<li>Create TGF files for some well known graphs, for example <i>k3.tgf</i>:
+<pre>
+# Nodes
+1 
+2 
+3
+# Edges
+1 2 Edge between the two
+1 3
+2 3
+</pre>
+<li>Create image or PDF files for the graphs you have defined.
+<li>Create an object-oriented model of the problem. You should have at least the following classes: <i>Graph, Catalog, CatalogIO</i>. 
+<!-- Consider using an interface or an abstract class in order to describe the documents in a catalog. <br/> -->
+
+<li> Implement the following methods representing <i>commands</i> that will manage the content of the catalog:
+  <ul>
+  <li> <i>add</i>: adds a new entry into the catalog;
+  <li> <i>list</i>: prints the content of the catalog on the screen;
+  <li> <i>open</i>: opens the image (or the definition) file using the native operating system application (see the <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html">Desktop</a> class);
+  <li> <i>save</i>: saves the catalog to an external file (either as a text or binary, using <i>object serialization</i>);
+  <li> <i>load</i>: loads the catalog from an external file.
+  </ul>
+<pre>
+  Catalog catalog = new Catalog("d:/graphs");  
+  catalog.add (new Graph("K4", "complete/k4.tgf", "complete/view/k4.png"));  
+  catalog.add (new Graph("Petersen", "special/petersen.tgf", "d:/ag/agr1.pdf"));  
+  catalog.open("Petersen");
+  ...
+  catalog.save("catalog.dat");
+  //...
+  catalog.load("catalog.dat");
+  catalog.list();
+</pre>
+<li> The application will signal invalid data (file format, path, etc.) using a <i>custom exception</i>.
+<li> The final form of the application will be an executable JAR archive. Identify the generated archive and launch the application from the console, using the JAR.
+</ul>
+
+<hr>
+<p><b>Optional</b> (1p)
+<br/>
+<ul>
+Create a <i>shell</i> that allows reading commands from the keyboard, together with their arguments.
+<li> Represent the commands using <b>classes instead of methods</b>. Use an interface or an abstract class in order to desribe a generic command.
+<li> Implement the commands <i>add, list, save, load, open</i> (create the classes <i>AddCommand</i>, <i>ListCommand</i>, etc.).
+<pre>
+  //at the keyboard
+  add "K4", "The complete graph with 4 vertices", "complete/k4.tgf", "complete/view/k4.png"
+  save d:/catalog.dat
+  ...  
+</pre>
+<li> Implement the command <i>report html</i>: create an HTML report representing the content of the catalog.
+<li> The application will signal the commands that are not valid using a <i>custom exception</i>.
+</ul>
+  
+
+<hr>
+<p><b>Bonus</b>
+<br/>
+<ul>
+<li> (0.5p) Implement the command: <i>svg [filename]</i>: create a <a href="https://www.w3schools.com/graphics/svg_intro.asp">SVG</a> file 
+containing a representation of the graph, using <a href="https://en.wikipedia.org/wiki/Circular_layout">a circular layout</a>.
+<!-- <ul><li><i>info</i>: display the metadata of a specific file: (you may want to use <a href="https://tika.apache.org/">Apache Tika</a> or something similar). -->
+<li> Implement the command: <i>report [format]</i>: create a report in various formats (html, pdf, xls) representing the content of the catalog, using a <b>reporting tool</b>:
+  <ul>
+  <li> (0.25p) A <a href="http://en.wikipedia.org/wiki/Template_engine_(web)">template engine</a> such as <a href="http://freemarker.sourceforge.net/">FreeMarker</a> or <a href="http://velocity.apache.org"> Velocity</a>,
+  in order to create an HTML report.
+  <li> (0.25p) A report designer such as <a href="http://www.dynamicreports.org/">Dynamic Reports</a>, in order to create PDF reports.
+  <li> (0.25p) <a href="https://poi.apache.org/"> Apache POI</a> in order to create Microsoft Documents (Word, Excel, etc).
+  </ul>  
+<li> (0.5p) Implement the input/output operations for the GraphML format, using <a href="https://docs.oracle.com/javase/tutorial/jaxp/dom/readingXML.html"> a DOM Parser</a> 
+or <a href="https://docs.oracle.com/javase/tutorial/jaxb/intro">Java API for XML Binding (JAXB) </a>.
+
+</ul>
+
+
+<hr>
+  
+<p>
+<b>Resources</b>
+<ul>
+<li> <a href="https://docs.oracle.com/javase/tutorial/essential/io/">Basic I/O </a>
+<li> <a href="http://docs.oracle.com/javase/tutorial/collections/index.html"> Exceptions </a>
+<li> <a href="https://docs.oracle.com/javase/tutorial/essential/regex/">Regular Expressions</a>
+<li> <a href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html">Setting the class path</a>
+<li> <a href="https://netbeans.org/kb/74/java/project-setup.html#projects-configuring"> Creating, Importing, and Configuring Java Projects in Netbeans </a>
+<li> <a href="https://docs.oracle.com/javase/tutorial/deployment/jar/">Packaging Programs in JAR Files </a>
+
+<!-- <li> <a href="../slides/extra/pachete_slide.pdf"> Organizarea claselor in pachete (slides) </a> -->
+</ul>
+
+<p> 
+<b>Objectives</b>
+<ul>
+<li> Use basic I/O streams.
+<li> Understand the difference between byte and character streams, primitive and decorator streams.
+<li> Use File I/O to works with files and directories.
+<li> Handle exceptions using <i>try-catch-finally</i> blocks.
+<li> Handle resources using <i>try-with-resources</i> statements.
+<li> Create custom exceptions and chained exceptions.
+<li> Use regular expressions and <a href="https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob">glob patterns</a>
+<li> Understand the notion of CLASSPATH.
+<li> Use external JAR libraries.
+<li> Package all project classes as an executable JAR file.
+</ul>
+
+
+</body>
+</html>
+
+</body>
+</html>

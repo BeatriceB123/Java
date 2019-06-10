@@ -1,0 +1,134 @@
+<html>
+<head> 
+<title> Lab 3</title> 
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+table {
+	border-collapse: collapse;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+</style>  
+  
+</head>
+<body>
+<a name="laborator3"></a>
+
+
+<h1> Lab 3</h1>
+<b>[valid 2018-2019]</b>
+
+<p>
+<b>The Shortest Path Problem</b><br>
+
+A <i>travel map</i> includes various locations (nodes) such as tourism sites, bussinesses, hotels and restaurants, airports, train stations, parks,  etc. 
+Locations have <i>names</i> and may have other common properties (such longitude and latitude, etc). Depending on its type, each location has various specific properties. 
+However, if the location is a <i>visitable</i>, it must have opening hours. 
+If the location is <i>payable</i>, it must have the entry fee (the price of the ticket). If the location is <i>classifiable</i>, it must have a classification (a rank).
+<br/>
+Along the map, there are <i>edges</i>, connections between two nodes, and each edge has a specific <i>cost</i>. 
+This cost may represent an actual distance (in kilometers) or the time required to go from one location to the other (in minutes).
+
+Some edges are bi-directional (&harr;) (having the same cost both ways), while others are uni-directional (&rarr;).
+<!-- Given two initial locations A and B, the problem is to determine the shortest path between the starting node A and the final destination B. -->
+<p>
+Example: nodes are: v1 (Hotel)  v2 (Museum A) v3 (Museum B) v4 (Church A) v5 (Church B) v6 (Restaurant). 
+<table border="1">
+<tr>
+<th>Edge </th> <th> Cost </th>
+<tr><td> v1&harr;v2 </td> <td> 15 </td>
+<tr><td> v1&harr;v3 </td> <td> 10 </td>
+<tr><td> v3&rarr;v2 </td> <td> 1 </td>
+<tr><td> v3&harr;v4 </td> <td> 2 </td>
+<tr><td> v4&harr;v5 </td> <td> 1 </td>
+<tr><td> v5&harr;v6 </td> <td> 1 </td>
+<tr><td> v2&harr;v6 </td> <td> 10 </td>
+</table>
+
+  
+<p>
+The main specifications of the application are:
+<hr>
+<p><b>Compulsory</b> (1p)
+<ul>
+<li>Create an object-oriented model of the problem. You should have at least the following classes <i>TravelMap, Node, Edge, Hotel, Museum, Church, Restaurant</i>.
+<li> Create the interfaces <i>Visitable</i>, <i>Payable</i>, <i>Classifiable</i>. The classes above must implement these interfaces accordingly.
+<pre>
+  public class Hotel extends Node implements Classifiable { ... }
+</pre>
+<li>Create all the objects given in the example.
+<pre>
+  Hotel v1 = new Hotel("California");
+  Museum v2 = ...
+  ...
+</pre>
+<li>Create a <i>TravelMap</i> object that will contain the <i>list</i> of nodes and the <i>list</i> of edges. Display all the locations sorted by their names.
+<pre>
+  TravelMap map = new TravelMap();
+  map.addNode(v1);
+  map.addNode(v2); //maybe put the nodes in an array?
+  ...
+  map.addEdge(v1, v2, 15); //two way street by default
+  map.addEdge(v3, v2, 1, false); //one-way street
+  ...
+  System.out.println("The map is: \n" + map.getNodes());
+<li>
+</pre>
+</ul>
+
+<hr>
+<p><b>Optional</b> (1p)
+<br/>
+<ul>
+<li> Implement the <i>toString</i> method for the <i>TravelMap</i> class.
+<li> Using <i>streams</i>, display the locations that are <i>visitable</i> and are not <i>payable</i>, sorted by their opening hour. 
+<li> Using <i>streams</i>, display the average price ticket of the locations that are <i>payable</i>. 
+<li> Create <i>default</i> methods in the interface <i>Visitable</i>, with the opening hour <i>09:30</i> and the closing hour <i>20:00</i>.
+<li> Create a <i>static</i> method <i>getVisitingDuration</i>,in the interface <i>Visitable</i>, that returns a <i>Duration</i> object, representing how long a location is opened during a day.
+<br/>
+<li> Write a <b>greedy</b> algorithm that determines a "greedy shortest path" between two given nodes.
+</ul>
+
+<hr>
+<p><b>Bonus</b>
+<br/>
+<ul>
+<li>Implement an <b>efficient</b> algorithm that determines: 
+	<ul> 
+	<li> <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">the shortest path</a> between two given nodes.
+	<li> the shortest paths between every two distinct nodes.
+	</ul>
+</ul>
+
+</ul>
+
+<p>
+<b>Resources</b>
+<ul>
+<li> <a href="http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html"> The Java Tutorials: Interfaces </a>
+<li> <a href="http://docs.oracle.com/javase/tutorial/collections/index.html"> The Java Tutorials: Collections </a> (<a href="http://bigocheatsheet.com/"> Know Thy Complexities! </a>)
+<li> <a href="http://docs.oracle.com/javase/tutorial/java/generics/index.html"> The Java Tutorials: Generics </a>
+<li><a href="https://docs.oracle.com/javase/tutorial/datetime/index.html"> The Date-Time package</a>
+</ul>
+
+<p> 
+<b>Objectives</b>
+<ul>
+<li> Create interfaces to describe specifications.
+<li> Create multiple implementations of an interface.
+<li> Understand the differences between abstract classes and interfaces.
+<li> Use packages to organize the classes and intefaces of the application.
+<!-- <li> Implement the <i>Model-View-Controller</i> pattern.
+<li> Implement the <i>Factory Method</i> pattern.
+<li> Implement the <i>Observer</i> pattern. -->
+<li> Use collections and generics.
+<li> Use lambda-expressions and streams.
+<li> Understand the space-time tradeoff of various types of collections.
+</ul>
+
+
+</body>
+</html>

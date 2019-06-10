@@ -1,0 +1,3 @@
+e:
+cd E:\JAVA - Programare avansata\Laborator8Java\ClientApplication\out\production\ClientApplication
+java SocialNetworkClient
